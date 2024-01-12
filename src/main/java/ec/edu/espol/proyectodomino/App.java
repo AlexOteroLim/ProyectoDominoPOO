@@ -17,6 +17,7 @@ import java.util.Random;
 public class App extends Application {
     public static Juego juego;
     private static Scene scene;
+    public static boolean primero;
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("VistaDomino").load(), 680, 540);
@@ -40,13 +41,15 @@ public class App extends Application {
         //jugadores - instancias
         Jugador jugador = juego.getJugadores().get(0);
         Jugador bot = juego.getJugadores().get(1);
-
-        launch();
-        System.out.println("-------------------\nBienvenido a Domino\n-------------------");
-       
+        
         Random rd = new Random();
-        //random de bool
-        boolean primero = rd.nextBoolean(); //escoger quien inicia primero si bot o jugador
+        primero = rd.nextBoolean(); //escoger quien inicia primero si bot o jugador
+        
+        
+        launch();
+        
+        System.out.println("-------------------\nBienvenido a Domino\n-------------------");
+
             
         if(primero){
             //inicio jugador
@@ -81,24 +84,3 @@ public class App extends Application {
         }
     }
 }
-        
-
-
-
-//          try{
-//            for (Ficha ficha : bot.getMano()){
-//                ImageView imv = new ImageView("/ImagesDomino/"+ficha.lado1+"-"+ficha.lado2+".png");
-//                hboxBot.getChildren().add(imv);
-//            }
-//
-//            for (Ficha ficha : user.getMano()){
-//                ImageView imv = new ImageView("/ImagesDomino/"+ficha.lado1+"-"+ficha.lado2+".png");
-//                hboxUser.getChildren().add(imv);
-//                imv.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent t) ->{
-//                    Alert r = new Alert(Alert.AlertType.INFORMATION);
-//                    r.show();
-//                });
-//            }
-//        }catch(Exception e){
-//            
-//        }

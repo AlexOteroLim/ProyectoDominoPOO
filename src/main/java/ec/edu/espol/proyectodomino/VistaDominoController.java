@@ -31,30 +31,39 @@ import javafx.stage.Stage;
  * @author Javier Otero
  */
 public class VistaDominoController implements Initializable {
+    private Juego juego;
     private ArrayList<Ficha> fichasBot;
     private ArrayList<Ficha> fichasUser;
     private ArrayList<Ficha> fichasLineaJuego;
+    private Boolean primero; 
     private Ficha selected = null;
     private Jugador bot;
     private Jugador user;
     
     @FXML
     private HBox hboxBot;
+    @FXML       
+    HBox hboxJuego;
     @FXML
-    private HBox hboxJuego;
-    @FXML
-    private HBox hboxUser;
+    HBox hboxUser;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        juego = App.juego;
         fichasUser =App.juego.getJugadores().get(0).getMano();
         fichasBot = App.juego.getJugadores().get(1).getMano();
+        bot = App.juego.getJugadores().get(0);
+        user = App.juego.getJugadores().get(1);
+        primero = App.primero;
         
         agregarFichasLineaUser(fichasUser);
         agregarFichasLineaBot(fichasBot);
+        if (primero){
+            
+        }
     }    
     
     @FXML
@@ -71,6 +80,14 @@ public class VistaDominoController implements Initializable {
         }
     }
     
+    @FXML void jugarFichaBot(Jugador jugad){
+        juego.maquina(jugad);
+
+
+
+    }
+
+    
     @FXML
     public void agregarFichasLineaUser(ArrayList<Ficha> fichas){
         try{
@@ -82,6 +99,7 @@ public class VistaDominoController implements Initializable {
                     if (ficha instanceof FichaComodin){
                         FichaComodin fichac = (FichaComodin)ficha;
                         imv.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent t) ->{
+                            
                             try{
                                 FXMLLoader fxml = App.loadFXML("OpcionInicioFin");
                                 Scene cs = new Scene(fxml.load(),600,600); //1. cargar el controller en una escena
@@ -102,6 +120,7 @@ public class VistaDominoController implements Initializable {
                     else{
                         imv.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent t) ->{
                             try{
+                                juego.agregarFichaLinea(ficha, user);
                                 hboxJuego.getChildren().add(imv);
                                 hboxUser.getChildren().remove(t);
                                 
@@ -116,6 +135,18 @@ public class VistaDominoController implements Initializable {
         }catch(Exception e){
             
         }
+        
     }
-}
+    public HBox getHboxBot() {
+        return hboxBot;
+    }
 
+    public HBox getHboxJuego() {
+        return hboxJuego;
+    }
+
+    public HBox getHboxUser() {
+        return hboxUser;
+    }
+    
+}
