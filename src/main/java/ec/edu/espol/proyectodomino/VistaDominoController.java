@@ -36,7 +36,7 @@ public class VistaDominoController implements Initializable {
     private ArrayList<Ficha> fichasUser;
     private ArrayList<Ficha> fichasLineaJuego;
     private Boolean primero; 
-    private Ficha selected = null;
+    public static Ficha selected;
     private Jugador bot;
     private Jugador user;
     
@@ -55,6 +55,7 @@ public class VistaDominoController implements Initializable {
         juego = App.juego;
         fichasUser =App.juego.getJugadores().get(0).getMano();
         fichasBot = App.juego.getJugadores().get(1).getMano();
+        fichasLineaJuego = App.juego.getLineajuego();
         bot = App.juego.getJugadores().get(0);
         user = App.juego.getJugadores().get(1);
         primero = App.primero;
@@ -80,14 +81,6 @@ public class VistaDominoController implements Initializable {
         }
     }
     
-    @FXML void jugarFichaBot(Jugador jugad){
-        juego.maquina(jugad);
-
-
-
-    }
-
-    
     @FXML
     public void agregarFichasLineaUser(ArrayList<Ficha> fichas){
         try{
@@ -97,18 +90,17 @@ public class VistaDominoController implements Initializable {
                     imv.setFitWidth(100);
                     
                     if (ficha instanceof FichaComodin){
+                        this.selected = ficha;
                         FichaComodin fichac = (FichaComodin)ficha;
                         imv.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent t) ->{
-                            
                             try{
                                 FXMLLoader fxml = App.loadFXML("OpcionInicioFin");
                                 Scene cs = new Scene(fxml.load(),600,600); //1. cargar el controller en una escena
                                 Stage st = new Stage();
                                 st.setScene(cs);
                                 st.show();
-                                ImageView b = (ImageView)t.getSource();
-                                Stage s = (Stage)b.getScene().getWindow(); //window no es un stage pero se puede setear en un (stage)
-                                s.close();
+                                
+                                
 
                             }catch(IOException e){
                                 Alert a = new Alert(Alert.AlertType.ERROR, "No se pudo abir el FXML");
@@ -118,12 +110,12 @@ public class VistaDominoController implements Initializable {
                     hboxUser.getChildren().add(imv);
                     }
                     else{
+                        this.selected = ficha;
                         imv.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent t) ->{
                             try{
                                 juego.agregarFichaLinea(ficha, user);
                                 hboxJuego.getChildren().add(imv);
                                 hboxUser.getChildren().remove(t);
-                                
                             }catch(Exception e){
                                 
                             }
@@ -136,17 +128,6 @@ public class VistaDominoController implements Initializable {
             
         }
         
-    }
-    public HBox getHboxBot() {
-        return hboxBot;
-    }
-
-    public HBox getHboxJuego() {
-        return hboxJuego;
-    }
-
-    public HBox getHboxUser() {
-        return hboxUser;
     }
     
 }
