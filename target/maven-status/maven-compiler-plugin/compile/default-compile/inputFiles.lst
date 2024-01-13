@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\creditos gonzalez\Documents\ProyectoDominoPOO\src\main\java\ec\edu\espol\proyectodomino\SeleccionarNumController.java
 C:\Users\creditos gonzalez\Documents\ProyectoDominoPOO\src\main\java\module-info.java
 C:\Users\creditos gonzalez\Documents\ProyectoDominoPOO\src\main\java\ec\edu\espol\proyectodomino\App.java
@@ -8,3 +9,28 @@ C:\Users\creditos gonzalez\Documents\ProyectoDominoPOO\src\main\java\JuegoDomino
 C:\Users\creditos gonzalez\Documents\ProyectoDominoPOO\src\main\java\JuegoDomino\Utilitaria.java
 C:\Users\creditos gonzalez\Documents\ProyectoDominoPOO\src\main\java\JuegoDomino\Juego.java
 C:\Users\creditos gonzalez\Documents\ProyectoDominoPOO\src\main\java\ec\edu\espol\proyectodomino\VistaDominoController.java
+=======
+<<<<<<< HEAD
+C:\Users\jmuni\Documents\ProyectoDominoPOO\src\main\java\ec\edu\espol\proyectodomino\VistaDominoController.java
+C:\Users\jmuni\Documents\ProyectoDominoPOO\src\main\java\ec\edu\espol\proyectodomino\App.java
+C:\Users\jmuni\Documents\ProyectoDominoPOO\src\main\java\JuegoDomino\Jugador.java
+C:\Users\jmuni\Documents\ProyectoDominoPOO\src\main\java\JuegoDomino\FichaComodin.java
+C:\Users\jmuni\Documents\ProyectoDominoPOO\src\main\java\ec\edu\espol\proyectodomino\SeleccionarNumController.java
+C:\Users\jmuni\Documents\ProyectoDominoPOO\src\main\java\JuegoDomino\Utilitaria.java
+C:\Users\jmuni\Documents\ProyectoDominoPOO\src\main\java\ec\edu\espol\proyectodomino\OpcionInicioFinController.java
+C:\Users\jmuni\Documents\ProyectoDominoPOO\src\main\java\JuegoDomino\Juego.java
+C:\Users\jmuni\Documents\ProyectoDominoPOO\src\main\java\JuegoDomino\Ficha.java
+C:\Users\jmuni\Documents\ProyectoDominoPOO\src\main\java\module-info.java
+=======
+C:\Users\Javier Otero\Desktop\POO Proyect\ProyectoDominoPOO\src\main\java\JuegoDomino\Ficha.java
+C:\Users\Javier Otero\Desktop\POO Proyect\ProyectoDominoPOO\src\main\java\ec\edu\espol\proyectodomino\SeleccionarNumController.java
+C:\Users\Javier Otero\Desktop\POO Proyect\ProyectoDominoPOO\src\main\java\JuegoDomino\Juego.java
+C:\Users\Javier Otero\Desktop\POO Proyect\ProyectoDominoPOO\src\main\java\JuegoDomino\Utilitaria.java
+C:\Users\Javier Otero\Desktop\POO Proyect\ProyectoDominoPOO\src\main\java\module-info.java
+C:\Users\Javier Otero\Desktop\POO Proyect\ProyectoDominoPOO\src\main\java\ec\edu\espol\proyectodomino\VistaDominoController.java
+C:\Users\Javier Otero\Desktop\POO Proyect\ProyectoDominoPOO\src\main\java\JuegoDomino\Jugador.java
+C:\Users\Javier Otero\Desktop\POO Proyect\ProyectoDominoPOO\src\main\java\JuegoDomino\FichaComodin.java
+C:\Users\Javier Otero\Desktop\POO Proyect\ProyectoDominoPOO\src\main\java\ec\edu\espol\proyectodomino\App.java
+C:\Users\Javier Otero\Desktop\POO Proyect\ProyectoDominoPOO\src\main\java\ec\edu\espol\proyectodomino\OpcionInicioFinController.java
+>>>>>>> 562bc70491b427323857a2cee47ccd895d220312
+>>>>>>> 4e84a8d18acba59f847ff512e2a7e89c298616d4
