@@ -2,11 +2,9 @@ JuegoDomino\Utilitaria.class
 ec\edu\espol\proyectodomino\App.class
 JuegoDomino\Ficha.class
 ec\edu\espol\proyectodomino\OpcionInicioFinController.class
-ec\edu\espol\proyectodomino\Pelicula.class
 JuegoDomino\Juego.class
 JuegoDomino\FichaComodin.class
 ec\edu\espol\proyectodomino\SeleccionarNumController.class
 ec\edu\espol\proyectodomino\VistaDominoController.class
 module-info.class
 JuegoDomino\Jugador.class
-ec\edu\espol\proyectodomino\IOEXception.class
