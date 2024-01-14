@@ -92,8 +92,8 @@ public class SeleccionarNumController implements Initializable {
         }      
     }
      
-
-    private void numCombo(ActionEvent event) {
+    @FXML
+    public void numCombo(ActionEvent event) {
         String num = numberCBX.getValue();
         if (posicionInicioFin){
             for(int i = 1; i < 7; i++){

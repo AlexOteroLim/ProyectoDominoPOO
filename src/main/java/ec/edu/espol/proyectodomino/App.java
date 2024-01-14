@@ -17,10 +17,12 @@ import java.util.Random;
 public class App extends Application {
     public static Juego juego;
     private static Scene scene;
-    public static boolean primero;
+    
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("domino").load(), 1280, 780);
+        scene = new Scene(loadFXML("PantallaInicio").load(), 1280, 720);
+
+//        scene = new Scene(loadFXML("domino").load(), 1280, 780);
         stage.setScene(scene);
         stage.show();
     }
@@ -35,19 +37,19 @@ public class App extends Application {
 //    }
 
     public static void main(String[] args){
-        juego = new Juego();
-        juego.agregarJugador("User");
-        juego.agregarJugador("Bot");
-        //jugadores - instancias
-        Jugador jugador = juego.getJugadores().get(0);
-        Jugador bot = juego.getJugadores().get(1);
-        
-        //Random rd = new Random();
-        //primero = rd.nextBoolean(); //escoger quien inicia primero si bot o jugador
+//        juego = new Juego();
+//        juego.agregarJugador("user");
+//        juego.agregarJugador("Bot");
+//        //jugadores - instancias
+//        Jugador jugador = juego.getJugadores().get(0);
+//        Jugador bot = juego.getJugadores().get(1);
+//        
+//        Random rd = new Random();
+//        primero = rd.nextBoolean(); //escoger quien inicia primero si bot o jugador
         
         
         launch();
-        
+
 //        System.out.println("-------------------\nBienvenido a Domino\n-------------------");
 //
 //            
@@ -82,5 +84,5 @@ public class App extends Application {
 //            else
 //                System.out.println("El jugador "+bot.getNombre()+" ya no puede jugar fichas. El jugador "+jugador.getNombre()+ " gana.");               
 //        }
+   }
     }
-}

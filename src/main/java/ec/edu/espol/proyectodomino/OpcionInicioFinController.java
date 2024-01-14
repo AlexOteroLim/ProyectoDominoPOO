@@ -40,7 +40,7 @@ public class OpcionInicioFinController implements Initializable {
    
     
     @FXML
-    private void inicioPress(ActionEvent event) {
+    public void inicioPress(ActionEvent event) {
         posicionInicioFin = true;
         try{
             FXMLLoader fxml = App.loadFXML("SeleccionarNum");
@@ -52,7 +52,8 @@ public class OpcionInicioFinController implements Initializable {
             Stage s = (Stage)b.getScene().getWindow(); //window no es un stage pero se puede setear en un (stage)
             s.close();
         }catch(IOException e){
-            
+            System.out.println("No se pudo abrir el canal");
+            e.printStackTrace();
         }
         
 
@@ -60,7 +61,7 @@ public class OpcionInicioFinController implements Initializable {
     }
 
     @FXML
-    private void finPress(ActionEvent event) {
+    public void finPress(ActionEvent event) {
         posicionInicioFin = false;
         try{
             FXMLLoader fxml = App.loadFXML("SeleccionarNum");
@@ -72,7 +73,7 @@ public class OpcionInicioFinController implements Initializable {
             Stage s = (Stage)b.getScene().getWindow(); //window no es un stage pero se puede setear en un (stage)
             s.close();
         }catch(IOException e){
-            
+            System.out.println("No se pudo abrir el canal"+e.getMessage());
         }
     }
 

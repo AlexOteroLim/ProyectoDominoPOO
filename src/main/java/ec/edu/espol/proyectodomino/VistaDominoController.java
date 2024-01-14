@@ -11,6 +11,7 @@ import JuegoDomino.Jugador;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.event.EventType;
@@ -24,6 +25,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
@@ -40,11 +42,13 @@ public class VistaDominoController implements Initializable {
     public static Ficha selected;
     private Jugador bot;
     private Jugador user;
+
     private ArrayList<Ficha> lineajuego;
-    
-    @FXML
+        @FXML
     private HBox hboxBot;
+
     @FXML
+    private Text lineaUsr;
     public HBox hboxJuego;
     @FXML
     public HBox hboxUser;
@@ -54,20 +58,21 @@ public class VistaDominoController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        juego = App.juego;
-        lineajuego = juego.getLineajuego();
-        fichasUser =App.juego.getJugadores().get(0).getMano();
-        fichasBot = App.juego.getJugadores().get(1).getMano();
-        fichasLineaJuego = App.juego.getLineajuego();
-        bot = App.juego.getJugadores().get(0);
-        user = App.juego.getJugadores().get(1);
-        primero = App.primero;
-        
+        juego = new Juego();
+        juego.agregarJugador("user");
+        juego.agregarJugador("Bot");
+        //jugadores - instancias
+        Jugador jugador = juego.getJugadores().get(0);
+        Jugador bot = juego.getJugadores().get(1);
+        Random rd = new Random();
+        primero = rd.nextBoolean(); //escoger quien inicia primero si bot o jugador
+        lineaUsr.setText("Línea de " + PantallaInicioController.njugador); //modidica el nombre del usuario (revisar PIcontroller)
+        fichasUser =jugador.getMano();
+        fichasBot = bot.getMano();
+        fichasLineaJuego = juego.getLineajuego();
         agregarFichasLineaUser(fichasUser);
         agregarFichasLineaBot(fichasBot);
-        if (primero){
-            
-        }
+
     }    
     
     public void agregarFichasLineaBot(ArrayList<Ficha> fichas){

@@ -8,12 +8,9 @@ import JuegoDomino.Ficha;
 import JuegoDomino.FichaComodin;
 import JuegoDomino.Juego;
 import JuegoDomino.Jugador;
-import static ec.edu.espol.proyectodomino.App.juego;
-import static ec.edu.espol.proyectodomino.App.primero;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,12 +21,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
