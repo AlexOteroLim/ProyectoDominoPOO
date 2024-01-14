@@ -77,13 +77,13 @@ public class DominoController implements Initializable {
                 //bot.botJuego(juego);
                 lineaBotHbox.getChildren().add(img);
             }
-        } else{
+        }else{
             for(Ficha f: fichas){
                 ImageView img = (ImageView)this.imgFicha(f.getLado1(), f.getLado2());
                 img.setOnMouseExited(event -> {
                     //cuando pase por encima del mouse se vea puntero
                    img.setCursor(Cursor.HAND);
-               });
+                });
                 img.setOnMouseClicked(event ->{
                     System.out.println(f.toString());
                     if(f instanceof FichaComodin){

@@ -15,6 +15,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -46,10 +47,14 @@ public class PantallaInicioController implements Initializable {
         {
             try{
                 njugador = nombreUser.getText();
-                Parent root = FXMLLoader.load(getClass().getResource("VistaDomino.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("domino.fxml"));
                 Scene scene = new Scene(root);
-                Stage stage = (Stage) pantalla.getScene().getWindow(); 
-                stage.setScene(scene);
+                Stage pantallaJuego = new Stage();
+                pantallaJuego.setScene(scene);
+                pantallaJuego.show();
+                Button b = (Button)event.getSource();
+                Stage s = (Stage)b.getScene().getWindow(); //window no es un stage pero se puede setear en un (stage)
+                s.close();
 //                FXMLLoader fxml = App.loadFXML("VistaDomino");
 //                Scene juego = new Scene(fxml.load());
 //                Stage pantallajuego = new Stage();
