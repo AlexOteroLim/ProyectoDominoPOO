@@ -117,6 +117,8 @@ public class DominoController implements Initializable {
                             } catch (IOException ex) {
                                 ex.printStackTrace();
                             }
+                        }else{
+                            //cuando hay fichas en mesa
                         }
                         else{
                             //Ventana OpciónInicioFin si la linea tiene una ficha y se necesita especificar dónde poner la ficha
