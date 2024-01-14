@@ -11,18 +11,15 @@ import JuegoDomino.Jugador;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.effect.ColorAdjust;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
@@ -129,7 +126,6 @@ public class DominoController implements Initializable {
                         nuevaVentana.show();
                     }}
                 catch (IOException ex) {
-                                ex.printStackTrace();
                             }
                 
                 
@@ -161,7 +157,6 @@ public class DominoController implements Initializable {
                             refreshLJuego();
                             System.out.println(lineajuego.toString());
                             } catch (IOException ex) {
-                                ex.printStackTrace();
                             }
                         }else{
                             //cuando hay fichas en mesa
@@ -194,7 +189,6 @@ public class DominoController implements Initializable {
                             }
                             
                             } catch(IOException ex){
-                                ex.printStackTrace();
                             }
                             
                         }
