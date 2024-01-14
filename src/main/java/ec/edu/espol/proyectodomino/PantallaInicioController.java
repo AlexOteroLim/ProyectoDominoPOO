@@ -17,6 +17,7 @@ import javafx.scene.control.Button;
 
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 /**
  * FXML Controller class
@@ -27,7 +28,7 @@ public class PantallaInicioController implements Initializable {
 
 
     @FXML
-    private AnchorPane pantalla;
+    private VBox pantalla;
     @FXML
     private TextField nombreUser;
     public static String njugador; //esta variable permite modificar el nombre

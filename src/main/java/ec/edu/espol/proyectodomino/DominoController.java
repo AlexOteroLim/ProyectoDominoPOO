@@ -21,6 +21,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -46,12 +47,15 @@ public class DominoController implements Initializable {
     @FXML
     private Text usrTxt;
     public static boolean jGanador;
+    @FXML
+    private BorderPane pantalla;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        pantalla.setStyle("-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #0097b2, #7ed957);");
         //variables del juego
         juego = new Juego();
         usrTxt.setText("Linea " + PantallaInicioController.njugador);
@@ -137,14 +141,24 @@ public class DominoController implements Initializable {
                             if(pos){
                                 juego.agregarFichaLineaComodin(f, j, l1, juego.obtenerValorInicioLinea());
                                 lineaJugadorHbox.getChildren().remove(img);
+                                if(bot.jugabilidad(juego)){
                                 juego.maquina(bot);
                                 refreshJugador(bot);
+                              }else{
+                                jGanador = true;
+                                this.lanzarVtnGanador().show();
+                              }
                                 refreshLJuego();
                             } else{
                                 juego.agregarFichaLineaComodin(f, j, juego.ObtenerValorFinLinea(), l1);
                                 lineaJugadorHbox.getChildren().remove(img);
+                                if(bot.jugabilidad(juego)){
                                 juego.maquina(bot);
                                 refreshJugador(bot);
+                              }else{
+                                jGanador = true;
+                                this.lanzarVtnGanador().show();
+                              }
                                 refreshLJuego();
                             }
                             
@@ -156,9 +170,14 @@ public class DominoController implements Initializable {
                     else{ //si ficha no es comodin
                         if(juego.agregarFichaLinea(f, j)){
                               lineaJugadorHbox.getChildren().remove(img);
-                              juego.maquina(bot);
+                              if(bot.jugabilidad(juego)){
+                                juego.maquina(bot);
+                                refreshJugador(bot);
+                              }else{
+                                jGanador = true;
+                                this.lanzarVtnGanador().show();
+                              }                              
                               refreshLJuego();
-                              refreshJugador(bot);
                               System.out.println(lineajuego.toString());
                             } else{
                             //lanzar que ficha no es compatible
@@ -212,10 +231,10 @@ public class DominoController implements Initializable {
                 this.lanzarVtnGanador();
             }
             if(!jugador.jugabilidad(juego) || !bot.jugabilidad(juego)){
-                if(!jugador.jugabilidad(juego) && !jugador.tieneComodin()){
+                if(!jugador.jugabilidad(juego) && !bot.tieneComodin()){
                     jGanador = false;
                     this.lanzarVtnGanador().show();
-                }else if(!bot.jugabilidad(juego) && !bot.tieneComodin()){
+                }else if(!bot.jugabilidad(juego) && !jugador.tieneComodin()){
                     jGanador = true;
                     this.lanzarVtnGanador().show();
                 }
