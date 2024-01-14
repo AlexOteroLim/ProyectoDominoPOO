@@ -22,7 +22,7 @@
                   <HBox fx:id="hboxJuego" prefHeight="113.0" prefWidth="594.0" />
                </content>
             </ScrollPane>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Linea del Usuario" />
+            <Text fx:id="lineaUsr" strokeType="OUTSIDE" strokeWidth="0.0" text="Linea del Usuario" />
             <ScrollPane prefHeight="96.0" prefWidth="654.0" vbarPolicy="NEVER">
                <content>
                   <HBox fx:id="hboxUser" prefHeight="139.0" prefWidth="639.0" />

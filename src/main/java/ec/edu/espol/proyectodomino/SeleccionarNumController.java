@@ -29,7 +29,6 @@ public class SeleccionarNumController implements Initializable {
     private boolean posicionInicioFin;
 
     
-    @FXML
     private Text textoInicioFin;
 
     /**
@@ -57,7 +56,7 @@ public class SeleccionarNumController implements Initializable {
      
 
     @FXML
-    private void numCombo(ActionEvent event) {
+    public void numCombo(ActionEvent event) {
         String num = numberCBX.getValue();
         if (posicionInicioFin){
             for(int i = 1; i < 7; i++){

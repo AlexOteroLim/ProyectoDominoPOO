@@ -3,6 +3,7 @@ ec\edu\espol\proyectodomino\App.class
 JuegoDomino\Ficha.class
 ec\edu\espol\proyectodomino\OpcionInicioFinController.class
 JuegoDomino\Juego.class
+ec\edu\espol\proyectodomino\PantallaInicioController.class
 JuegoDomino\FichaComodin.class
 ec\edu\espol\proyectodomino\SeleccionarNumController.class
 ec\edu\espol\proyectodomino\VistaDominoController.class
