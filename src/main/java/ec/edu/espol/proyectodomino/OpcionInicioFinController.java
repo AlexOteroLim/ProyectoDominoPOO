@@ -55,9 +55,6 @@ public class OpcionInicioFinController implements Initializable {
             System.out.println("No se pudo abrir el canal");
             e.printStackTrace();
         }
-        
-
-          
     }
 
     @FXML

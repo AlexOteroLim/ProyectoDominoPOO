@@ -4,8 +4,6 @@
  */
 package ec.edu.espol.proyectodomino;
 
-import ec.edu.espol.proyectodomino.App;
-import static ec.edu.espol.proyectodomino.App.loadFXML;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -30,7 +28,6 @@ public class PantallaInicioController implements Initializable {
 
     @FXML
     private AnchorPane pantalla;
-    @FXML
     private TextField nombreUser;
     public static String njugador; //esta variable permite modificar el nombre
     
@@ -42,7 +39,6 @@ public class PantallaInicioController implements Initializable {
         pantalla.setStyle("-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #0097b2, #7ed957);");
     }    
     
-    @FXML
     public void btnjugar(ActionEvent event) throws IOException{
         {
             try{

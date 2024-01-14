@@ -94,31 +94,29 @@ public class DominoController implements Initializable {
                     System.out.println(f.toString());
                     if(f instanceof FichaComodin){
                         if(lineajuego.isEmpty()){
-                            try {                            
-                            //ventanaSelecNum
-                            FXMLLoader loader = new FXMLLoader(getClass().getResource("SeleccionarNum.fxml"));
-                            // Crear la nueva ventana
-                            Stage nuevaVentana = new Stage();
-                            SeleccionarNumController controller = loader.getController();
-                            // Configurar la escena y mostrar la nueva ventana
-                            Scene scene;
-                            
-                            scene = new Scene(loader.load(), 400, 400);
-                            nuevaVentana.setScene(scene);
-                            nuevaVentana.showAndWait();
-                            int l1 = SeleccionarNumController.l1;
-                            int l2 = SeleccionarNumController.l2;
-                            lineaJugadorHbox.getChildren().remove(img);
-                            juego.maquina(bot);
-                            refreshLJuego();
-                            refreshJugador(bot);
-                            System.out.println(lineajuego.toString());
-                            juego.agregarFichaLineaComodin(f, j, l1, l2);
-                            } catch (IOException ex) {
+                            try{                            
+                                //ventanaSelecNum
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("SeleccionarNum.fxml"));
+                                // Crear la nueva ventana
+                                Stage nuevaVentana = new Stage();
+                                SeleccionarNumController controller = loader.getController();
+                                // Configurar la escena y mostrar la nueva ventana
+                                Scene scene;
+
+                                scene = new Scene(loader.load(), 400, 400);
+                                nuevaVentana.setScene(scene);
+                                nuevaVentana.showAndWait();
+                                int l1 = SeleccionarNumController.l1;
+                                int l2 = SeleccionarNumController.l2;
+                                lineaJugadorHbox.getChildren().remove(img);
+                                juego.maquina(bot);
+                                refreshLJuego();
+                                refreshJugador(bot);
+                                System.out.println(lineajuego.toString());
+                                juego.agregarFichaLineaComodin(f, j, l1, l2);
+                            }catch (IOException ex) {
                                 ex.printStackTrace();
                             }
-                        }else{
-                            //cuando hay fichas en mesa
                         }
                         else{
                             //Ventana OpciónInicioFin si la linea tiene una ficha y se necesita especificar dónde poner la ficha
