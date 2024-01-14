@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\jmuni\Documents\ProyectoDominoPOO\src\main\java\ec\edu\espol\proyectodomino\VistaDominoController.java
 C:\Users\jmuni\Documents\ProyectoDominoPOO\src\main\java\ec\edu\espol\proyectodomino\App.java
 C:\Users\jmuni\Documents\ProyectoDominoPOO\src\main\java\JuegoDomino\Jugador.java
@@ -10,3 +11,17 @@ C:\Users\jmuni\Documents\ProyectoDominoPOO\src\main\java\JuegoDomino\Juego.java
 C:\Users\jmuni\Documents\ProyectoDominoPOO\src\main\java\ec\edu\espol\proyectodomino\PantallaInicioController.java
 C:\Users\jmuni\Documents\ProyectoDominoPOO\src\main\java\JuegoDomino\Ficha.java
 C:\Users\jmuni\Documents\ProyectoDominoPOO\src\main\java\module-info.java
+=======
+C:\Users\creditos gonzalez\Documents\ProyectoDominoPOO\src\main\java\ec\edu\espol\proyectodomino\SeleccionarNumController.java
+C:\Users\creditos gonzalez\Documents\ProyectoDominoPOO\src\main\java\module-info.java
+C:\Users\creditos gonzalez\Documents\ProyectoDominoPOO\src\main\java\ec\edu\espol\proyectodomino\App.java
+C:\Users\creditos gonzalez\Documents\ProyectoDominoPOO\src\main\java\ec\edu\espol\proyectodomino\OpcionInicioFinController.java
+C:\Users\creditos gonzalez\Documents\ProyectoDominoPOO\src\main\java\ec\edu\espol\proyectodomino\PantallaInicioController.java
+C:\Users\creditos gonzalez\Documents\ProyectoDominoPOO\src\main\java\JuegoDomino\Ficha.java
+C:\Users\creditos gonzalez\Documents\ProyectoDominoPOO\src\main\java\ec\edu\espol\proyectodomino\DominoController.java
+C:\Users\creditos gonzalez\Documents\ProyectoDominoPOO\src\main\java\JuegoDomino\FichaComodin.java
+C:\Users\creditos gonzalez\Documents\ProyectoDominoPOO\src\main\java\JuegoDomino\Jugador.java
+C:\Users\creditos gonzalez\Documents\ProyectoDominoPOO\src\main\java\JuegoDomino\Utilitaria.java
+C:\Users\creditos gonzalez\Documents\ProyectoDominoPOO\src\main\java\JuegoDomino\Juego.java
+C:\Users\creditos gonzalez\Documents\ProyectoDominoPOO\src\main\java\ec\edu\espol\proyectodomino\VistaDominoController.java
+>>>>>>> ef107bfd504be241e7de9cc3acc3cc32790ce503
