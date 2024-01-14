@@ -27,6 +27,7 @@ public class OpcionInicioFinController implements Initializable {
     private Button botonInicio;
     @FXML
     private Button botonFin;
+    private Stage nuevaVentana;
     
     public static boolean posicionInicioFin;
 
@@ -35,50 +36,39 @@ public class OpcionInicioFinController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        try{
+            //Abrir selecNumController
+            //ventanaSelecNum
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("SeleccionarNum.fxml"));
+            // Crear la nueva ventana
+            nuevaVentana = new Stage();
+            // Configurar la escena y mostrar la nueva ventana
+            Scene scene;
+
+            scene = new Scene(loader.load(), 400, 400);
+            nuevaVentana.setScene(scene);
+        }catch(IOException e){
+            System.out.println("No se pudo abrir el canal");
+            e.printStackTrace();
+        }
     }    
    
     
     @FXML
     public void inicioPress(ActionEvent event) {
+        Stage stage = (Stage)this.botonInicio.getScene().getWindow();
         posicionInicioFin = true;
-        try{
-            FXMLLoader fxml = App.loadFXML("SeleccionarNum");
-            Scene cs = new Scene(fxml.load(),600,600); //1. cargar el controller en una escena
-            Stage st = new Stage();
-            st.setScene(cs);
-            st.show();
-            Button b = (Button)event.getSource();
-            Stage s = (Stage)b.getScene().getWindow(); //window no es un stage pero se puede setear en un (stage)
-            s.close();
-        }catch(IOException e){
-            System.out.println("No se pudo abrir el canal");
-            e.printStackTrace();
-        }
+        nuevaVentana.showAndWait();
+        stage.close();
         
-
-          
     }
 
     @FXML
     public void finPress(ActionEvent event) {
+        Stage stage = (Stage)this.botonFin.getScene().getWindow();
         posicionInicioFin = false;
-        try{
-            FXMLLoader fxml = App.loadFXML("SeleccionarNum");
-            Scene cs = new Scene(fxml.load(),600,600); //1. cargar el controller en una escena
-            Stage st = new Stage();
-            st.setScene(cs);
-            st.show();
-            Button b = (Button)event.getSource();
-            Stage s = (Stage)b.getScene().getWindow(); //window no es un stage pero se puede setear en un (stage)
-            s.close();
-        }catch(IOException e){
-            System.out.println("No se pudo abrir el canal"+e.getMessage());
-        }
-    }
-
-    public boolean isPosicionInicioFin() {
-        return posicionInicioFin;
+        nuevaVentana.showAndWait();
+        stage.close();
     }
     
 }

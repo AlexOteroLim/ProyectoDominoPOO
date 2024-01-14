@@ -4,8 +4,6 @@
  */
 package ec.edu.espol.proyectodomino;
 
-import ec.edu.espol.proyectodomino.App;
-import static ec.edu.espol.proyectodomino.App.loadFXML;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;

@@ -21,8 +21,11 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.effect.ColorAdjust;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
@@ -32,18 +35,20 @@ import javafx.stage.Stage;
  */
 public class DominoController implements Initializable {
     private Juego juego;
-    private ArrayList<Ficha> lineajuego;
+    public static ArrayList<Ficha> lineajuego;
     private ArrayList<Ficha> manoBot;
     private ArrayList<Ficha> manoJugador;
-    private Jugador jugador;
     private Jugador bot;
-
+    private Jugador jugador;
     @FXML
     private HBox lineaBotHbox;
     @FXML
     private HBox lineaJugadorHbox;
     @FXML
     private HBox lineaJuegoHBox;
+    @FXML
+    private Text usrTxt;
+    public static boolean jGanador;
 
     /**
      * Initializes the controller class.
@@ -52,11 +57,13 @@ public class DominoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         //variables del juego
         juego = new Juego();
-        juego.agregarJugador("user");
-        juego.agregarJugador("Bot");
+        usrTxt.setText("Linea " + PantallaInicioController.njugador);
+        juego.agregarJugador(PantallaInicioController.njugador);
+        juego.agregarJugador("bot");
         //jugadores - instancias
-        Jugador jugador = juego.getJugadores().get(0);
-        Jugador bot = juego.getJugadores().get(1);
+        ArrayList<Jugador> jugadores = juego.getJugadores();
+        jugador = jugadores.get(0);
+        bot = jugadores.get(1);
 //        lineaUsr.setText("Línea de " + PantallaInicioController.njugador); //modidica el nombre del usuario (revisar PIcontroller)
         manoJugador =jugador.getMano();
         manoBot = bot.getMano();
@@ -71,7 +78,7 @@ public class DominoController implements Initializable {
     //carga las fichas
     public void cargarFichas(Jugador j, ArrayList<Ficha> fichas){
         System.out.println(j.getNombre());
-        if(j.getNombre().equals("Bot")){
+        if(j.getNombre().equals("bot")){
             for(Ficha f: fichas){
                 ImageView img = (ImageView)this.imgFicha(f.getLado1(), f.getLado2());
                 //bot.botJuego(juego);
@@ -84,39 +91,113 @@ public class DominoController implements Initializable {
                     //cuando pase por encima del mouse se vea puntero
                    img.setCursor(Cursor.HAND);
                 });
+                try {
+                    //Abrir selecNumController
+                    //ventanaSelecNum
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("PantallaFinal.fxml"));
+                    // Crear la nueva ventana
+                    Stage nuevaVentana = new Stage();
+                    // Configurar la escena y mostrar la nueva ventana
+                    Scene scene;
+
+                    scene = new Scene(loader.load(), 400, 400);
+                    nuevaVentana.setScene(scene);
+                    nuevaVentana.show();
+                    if(!jugador.jugabilidad(juego)||!bot.jugabilidad(juego)){
+                        if(!jugador.jugabilidad(juego) && bot.tieneComodin()){
+                            juego.maquina(bot);
+                            refreshJugador(bot);
+                            refreshLJuego();
+                        }
+                        if(!jugador.jugabilidad(juego) && !bot.tieneComodin()){
+                            //perdiste
+                            jGanador = false;
+                            nuevaVentana.show();
+                        }else if(!bot.jugabilidad(juego) && !jugador.tieneComodin()){
+                            //ganaste
+                            jGanador = true;
+                            nuevaVentana.show();
+                        }
+                    }
+                    if(manoJugador.isEmpty()){
+                        //ventana ganaste
+                        jGanador = true;
+                        nuevaVentana.show();
+                    }else if(manoBot.isEmpty()){
+                        //ventana perdiste
+                        jGanador = false;
+                        nuevaVentana.show();
+                    }}
+                catch (IOException ex) {
+                                ex.printStackTrace();
+                            }
+                
+                
                 img.setOnMouseClicked(event ->{
                     System.out.println(f.toString());
-                    if(f instanceof FichaComodin){
-                        
+                    if(f instanceof FichaComodin){//dos casos, si hay elementos en lJuego o no
+                        //si no hay elementos en lineajuego
                         if(lineajuego.isEmpty()){
-                            try {                            
+                            try {
+                            //Abrir selecNumController
                             //ventanaSelecNum
                             FXMLLoader loader = new FXMLLoader(getClass().getResource("SeleccionarNum.fxml"));
                             // Crear la nueva ventana
                             Stage nuevaVentana = new Stage();
-                            SeleccionarNumController controller = loader.getController();
                             // Configurar la escena y mostrar la nueva ventana
                             Scene scene;
                             
                             scene = new Scene(loader.load(), 400, 400);
                             nuevaVentana.setScene(scene);
                             nuevaVentana.showAndWait();
+                            
+                            //entrada del SelecNumController
                             int l1 = SeleccionarNumController.l1;
                             int l2 = SeleccionarNumController.l2;
+                            juego.agregarFichaLineaComodin(f, j, l1, l2);
                             lineaJugadorHbox.getChildren().remove(img);
                             juego.maquina(bot);
-                            refreshLJuego();
                             refreshJugador(bot);
+                            refreshLJuego();
                             System.out.println(lineajuego.toString());
-                            juego.agregarFichaLineaComodin(f, j, l1, l2);
                             } catch (IOException ex) {
                                 ex.printStackTrace();
                             }
                         }else{
                             //cuando hay fichas en mesa
+                            //abrir ventana OpcionInicioFinController
+                            try{
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("OpcionInicioFin.fxml"));
+                            // Crear la nueva ventana
+                            Stage nuevaVentana = new Stage();
+                            // Configurar la escena y mostrar la nueva ventana
+                            Scene scene;
+                            
+                            scene = new Scene(loader.load(), 400, 400);
+                            nuevaVentana.setScene(scene);
+                            nuevaVentana.showAndWait();
+                            
+                            boolean pos = OpcionInicioFinController.posicionInicioFin;
+                            int l1 = SeleccionarNumController.l1;
+                            if(pos){
+                                juego.agregarFichaLineaComodin(f, j, l1, juego.obtenerValorInicioLinea());
+                                lineaJugadorHbox.getChildren().remove(img);
+                                juego.maquina(bot);
+                                refreshJugador(bot);
+                                refreshLJuego();
+                            } else{
+                                juego.agregarFichaLineaComodin(f, j, juego.ObtenerValorFinLinea(), l1);
+                                lineaJugadorHbox.getChildren().remove(img);
+                                juego.maquina(bot);
+                                refreshJugador(bot);
+                                refreshLJuego();
+                            }
+                            
+                            } catch(IOException ex){
+                                ex.printStackTrace();
+                            }
+                            
                         }
-                        
-                    
                     }
                     else{ //si ficha no es comodin
                         if(juego.agregarFichaLinea(f, j)){
@@ -148,7 +229,7 @@ public class DominoController implements Initializable {
                 return 0;
     }
     public void refreshJugador(Jugador j){
-        if(j.getNombre().equals("Bot")){
+        if(j.getNombre().equals("bot")){
             lineaBotHbox.getChildren().clear();
             for(Ficha f: j.getMano()){
                     ImageView img = imgFicha(f.getLado1(), f.getLado2());
@@ -165,9 +246,21 @@ public class DominoController implements Initializable {
     public void refreshLJuego(){
         lineaJuegoHBox.getChildren().clear();
             for(Ficha f: lineajuego){
-                    Node img = imgFicha(f.getLado1(), f.getLado2());
-                    lineaJuegoHBox.getChildren().add(img);
+                    if(f instanceof FichaComodin){
+                        ImageView img = imgFicha(f.getLado1(), f.getLado2());
+                        ColorAdjust colorAdjust = new ColorAdjust();
+                        colorAdjust.setHue(0.1); // Ajustar el tono al dorado
+                        colorAdjust.setSaturation(1.0); // Máxima saturación para intensificar el color
+                        colorAdjust.setBrightness(0.5); // Ajustar el brillo
+                        img.setEffect(colorAdjust);
+                        lineaJuegoHBox.getChildren().add(img);
+                    }
+                    else{
+                        ImageView img = imgFicha(f.getLado1(), f.getLado2());
+                        lineaJuegoHBox.getChildren().add(img);                        
+                    }
                 }
+        
     }
     public ImageView imgFicha(int l1, int l2){
         ImageView imv = new ImageView("/ImagesDomino/-1--1.png");
