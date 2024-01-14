@@ -86,40 +86,6 @@ public class Jugador {
         }
         return false;
     }
-    
-     public void jugadorJuego(Juego juego){
-        Scanner sc = new Scanner(System.in);
-        System.out.println("-------------------\nJugador " + this.getNombre() +"\n-------------------");
-        System.out.print("Jugador " + this.getNombre() +": Mano -> ");
-        this.imprimirMano();
-        System.out.println("Linea de Juego -> ");
-        juego.mostrarLinea();
-
-        System.out.print("Indice de ficha para jugar (0 es el primero): ");
-        int pos = sc.nextInt();
-        //el siguiente while valida que pos1 sea correcto --- validacion
-        while(pos < 0 || pos >= this.getMano().size()){
-            System.out.println("Movimiento invalido. Intente de nuevo (0 es el primero): ");
-            pos = sc.nextInt();
-        }
-        Ficha f = this.getMano().get(pos);                
-        boolean a= juego.agregarFichaLinea(f,this);//Intenta agregar la ficha
-        while(!a){ //valida que se cumpla el boolean de aggficha
-            //si no
-            System.out.println("Movimiento invalido. Intente de nuevo (0 es el primero): ");
-            pos = sc.nextInt();
-            //validacion
-            while(pos < 0 || pos >= this.getMano().size()){
-                System.out.println("Movimiento invalido. Intente de nuevo (0 es el primero): ");
-                pos = sc.nextInt();
-            }
-            f = this.getMano().get(pos);                
-            a= juego.agregarFichaLinea(f,this);
-        }
-        System.out.print("Nueva línea de juego -> ");
-        juego.mostrarLinea();
-    }
-    
     //comportamiento del bot mientras juega
     public void botJuego(Juego juego){
         System.out.println("-------------------\nJugador " + this.getNombre() +"\n-------------------");

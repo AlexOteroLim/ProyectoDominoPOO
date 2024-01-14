@@ -22,6 +22,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
@@ -39,13 +40,14 @@ public class VistaDominoController implements Initializable {
     public static Ficha selected;
     private Jugador bot;
     private Jugador user;
+    private ArrayList<Ficha> lineajuego;
     
     @FXML
     private HBox hboxBot;
-    @FXML       
-    HBox hboxJuego;
     @FXML
-    HBox hboxUser;
+    public HBox hboxJuego;
+    @FXML
+    public HBox hboxUser;
 
     /**
      * Initializes the controller class.
@@ -53,6 +55,7 @@ public class VistaDominoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         juego = App.juego;
+        lineajuego = juego.getLineajuego();
         fichasUser =App.juego.getJugadores().get(0).getMano();
         fichasBot = App.juego.getJugadores().get(1).getMano();
         fichasLineaJuego = App.juego.getLineajuego();
@@ -67,7 +70,6 @@ public class VistaDominoController implements Initializable {
         }
     }    
     
-    @FXML
     public void agregarFichasLineaBot(ArrayList<Ficha> fichas){
         try{
             for (Ficha ficha : fichas){
@@ -81,7 +83,6 @@ public class VistaDominoController implements Initializable {
         }
     }
     
-    @FXML
     public void agregarFichasLineaUser(ArrayList<Ficha> fichas){
         try{
             for (Ficha ficha : fichas){
@@ -113,9 +114,28 @@ public class VistaDominoController implements Initializable {
                         this.selected = ficha;
                         imv.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent t) ->{
                             try{
-                                juego.agregarFichaLinea(ficha, user);
-                                hboxJuego.getChildren().add(imv);
-                                hboxUser.getChildren().remove(t);
+                                if(juego.agregarFichaLinea(selected, user)){
+                                    //si esta vacia
+                                    if (lineajuego.isEmpty()){
+                                        lineajuego.add(ficha);
+                                        user.removerFicha(ficha);
+                                        hboxJuego.getChildren().add(imv);
+                                    }
+                                    else{
+                                        //si hay elementos
+                                        if(selected.getLado2() == juego.obtenerValorInicioLinea()){
+                                                lineajuego.add(0, selected);
+                                                user.removerFicha(selected);
+                                                hboxJuego.getChildren().add(0,imv);
+                                            }
+                                            else if(selected.getLado1() == juego.ObtenerValorFinLinea()){
+                                                lineajuego.add(selected);
+                                                user.removerFicha(selected);
+                                                hboxJuego.getChildren().add(imv);
+                                            }
+                                        }
+                                    hboxUser.getChildren().remove(t);
+                                }
                             }catch(Exception e){
                                 
                             }
@@ -128,6 +148,14 @@ public class VistaDominoController implements Initializable {
             
         }
         
+    }
+
+    public HBox getHboxJuego() {
+        return hboxJuego;
+    }
+
+    public void setHboxJuego(HBox hboxJuego) {
+        this.hboxJuego = hboxJuego;
     }
     
 }

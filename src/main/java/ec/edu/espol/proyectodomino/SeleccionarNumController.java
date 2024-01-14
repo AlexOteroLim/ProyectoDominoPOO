@@ -12,8 +12,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -24,13 +26,15 @@ import javafx.stage.Stage;
  */
 public class SeleccionarNumController implements Initializable {
 
-    @FXML
     private ComboBox<String> numberCBX;
     private boolean posicionInicioFin;
 
     
-    @FXML
     private Text textoInicioFin;
+    @FXML
+    private VBox mainVBox;
+    @FXML
+    private Button aceptarBtn;
 
     /**
      * Initializes the controller class.
@@ -56,7 +60,6 @@ public class SeleccionarNumController implements Initializable {
     }
      
 
-    @FXML
     private void numCombo(ActionEvent event) {
         String num = numberCBX.getValue();
         if (posicionInicioFin){
