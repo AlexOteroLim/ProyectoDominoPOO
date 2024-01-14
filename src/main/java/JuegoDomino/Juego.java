@@ -121,6 +121,7 @@ public class Juego {
                 //si es que va al inicio
                 if (aleatorio1){
                     f2.setLado1(rd.nextInt(6)+1);
+                    f2.setLado2(obtenerValorInicioLinea());
                     lineajuego.add(0, f2);
                     bot.removerFicha(f);
                     break;
@@ -128,6 +129,7 @@ public class Juego {
                 //si es que va al final
                 else{
                     f2.setLado2(rd.nextInt(6)+1);
+                    f2.setLado1(ObtenerValorFinLinea());
                     lineajuego.add(f2);
                     bot.removerFicha(f);
                     break;

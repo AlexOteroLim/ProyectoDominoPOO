@@ -58,7 +58,7 @@ public class SeleccionarNumController implements Initializable {
         a[4] = "5";
         a[5] = "6";
         
-        lineajuego = App.juego.getLineajuego();
+        lineajuego = DominoController.lineajuego;
         if(lineajuego.isEmpty()){
             Text l1Txt = new Text("Lado 1: ");
             Text l2Txt = new Text("Lado 2: ");            
@@ -155,9 +155,9 @@ public class SeleccionarNumController implements Initializable {
     
     @FXML
     private void aceptarBtn(ActionEvent event) {
-        System.out.println(cbxFL1.getValue()+cbxFL2.getValue());
         Stage stage = (Stage)this.btnAcept.getScene().getWindow();
         if(lineajuego.isEmpty()){
+            System.out.println(cbxFL1.getValue()+cbxFL2.getValue());            
             l1 = Integer.parseInt(cbxFL1.getValue());
             l2 = Integer.parseInt(cbxFL2.getValue());
             stage.close();
