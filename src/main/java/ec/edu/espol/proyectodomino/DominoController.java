@@ -108,6 +108,8 @@ public class DominoController implements Initializable {
                             } catch (IOException ex) {
                                 ex.printStackTrace();
                             }
+                        }else{
+                            //cuando hay fichas en mesa
                         }
                         
                     
