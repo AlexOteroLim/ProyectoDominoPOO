@@ -4,16 +4,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<<<<<<< HEAD
 <VBox alignment="CENTER" prefHeight="400.0" prefWidth="400.0" spacing="25.0" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.proyectodomino.SeleccionarNumController">
-=======
-<<<<<<< HEAD
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.proyectodomino.SeleccionarNumController"> 
-=======
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.proyectodomino.SeleccionarNumController">
->>>>>>> 83c5715479ee3fef4004fc810a76fa4659d0935c
->>>>>>> de3b9e3e0f301b7c19395c017ad429372dc9cc23
    <children>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ficha Comodin" />
       <VBox fx:id="mainVBox" alignment="CENTER" prefHeight="48.0" prefWidth="173.0" />
