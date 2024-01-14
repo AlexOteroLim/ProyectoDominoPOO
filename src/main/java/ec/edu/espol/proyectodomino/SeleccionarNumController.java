@@ -34,7 +34,7 @@ public class SeleccionarNumController implements Initializable {
     private boolean posicionInicioFin;
     private ArrayList<Ficha> lineajuego;
 
-    
+    @FXML
     private Text textoInicioFin;
     @FXML
     private VBox mainVBox;
@@ -71,6 +71,7 @@ public class SeleccionarNumController implements Initializable {
             mainVBox.setSpacing(20);
             mainVBox.getChildren().addAll(l1Txt,cbxFL1,l2Txt,cbxFL2);
         }else{
+            setTexto();
             Text l1Txt = new Text("Lado: ");
             cbxFL1 = new ComboBox<>();
             cbxFL1.setPromptText("Lado:");
@@ -82,7 +83,7 @@ public class SeleccionarNumController implements Initializable {
         }
     }
     
-    
+    @FXML
     private void setTexto(){   
         if (posicionInicioFin){
             textoInicioFin.setText(textoInicioFin.getText()+" Inicio");

@@ -21,8 +21,10 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
@@ -44,6 +46,8 @@ public class DominoController implements Initializable {
     private HBox lineaJugadorHbox;
     @FXML
     private HBox lineaJuegoHBox;
+    @FXML
+    private Text nombreJugador;
 
     /**
      * Initializes the controller class.
@@ -52,7 +56,7 @@ public class DominoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         //variables del juego
         juego = new Juego();
-        juego.agregarJugador("user");
+        juego.agregarJugador("Reemplazar una vez terminado->"); // PantallaInicioController.njugador
         juego.agregarJugador("Bot");
         //jugadores - instancias
         Jugador jugador = juego.getJugadores().get(0);
@@ -60,7 +64,9 @@ public class DominoController implements Initializable {
 //        lineaUsr.setText("Línea de " + PantallaInicioController.njugador); //modidica el nombre del usuario (revisar PIcontroller)
         manoJugador =jugador.getMano();
         manoBot = bot.getMano();
-        lineajuego = juego.getLineajuego();       
+        lineajuego = juego.getLineajuego();
+        nombreJugador.setText("Mano "+"Reemplazar una vez terminado->"); // PantallaInicioController.njugador
+        
         cargarFichas(bot, manoBot);
         cargarFichas(jugador, manoJugador);
         
@@ -77,44 +83,53 @@ public class DominoController implements Initializable {
                 //bot.botJuego(juego);
                 lineaBotHbox.getChildren().add(img);
             }
-        } else{
+        }else{
             for(Ficha f: fichas){
                 ImageView img = (ImageView)this.imgFicha(f.getLado1(), f.getLado2());
                 img.setOnMouseExited(event -> {
                     //cuando pase por encima del mouse se vea puntero
                    img.setCursor(Cursor.HAND);
-               });
+                });
                 img.setOnMouseClicked(event ->{
                     System.out.println(f.toString());
                     if(f instanceof FichaComodin){
-                        
                         if(lineajuego.isEmpty()){
-                            try {                            
-                            //ventanaSelecNum
-                            FXMLLoader loader = new FXMLLoader(getClass().getResource("SeleccionarNum.fxml"));
-                            // Crear la nueva ventana
-                            Stage nuevaVentana = new Stage();
-                            SeleccionarNumController controller = loader.getController();
-                            // Configurar la escena y mostrar la nueva ventana
-                            Scene scene;
-                            
-                            scene = new Scene(loader.load(), 400, 400);
-                            nuevaVentana.setScene(scene);
-                            nuevaVentana.showAndWait();
-                            int l1 = SeleccionarNumController.l1;
-                            int l2 = SeleccionarNumController.l2;
-                            lineaJugadorHbox.getChildren().remove(img);
-                            juego.maquina(bot);
-                            refreshLJuego();
-                            refreshJugador(bot);
-                            System.out.println(lineajuego.toString());
-                            juego.agregarFichaLineaComodin(f, j, l1, l2);
-                            } catch (IOException ex) {
+                            try{                            
+                                //ventanaSelecNum
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("SeleccionarNum.fxml"));
+                                // Crear la nueva ventana
+                                Stage nuevaVentana = new Stage();
+                                SeleccionarNumController controller = loader.getController();
+                                // Configurar la escena y mostrar la nueva ventana
+                                Scene scene;
+
+                                scene = new Scene(loader.load(), 400, 400);
+                                nuevaVentana.setScene(scene);
+                                nuevaVentana.showAndWait();
+                                int l1 = SeleccionarNumController.l1;
+                                int l2 = SeleccionarNumController.l2;
+                                lineaJugadorHbox.getChildren().remove(img);
+                                juego.maquina(bot);
+                                refreshLJuego();
+                                refreshJugador(bot);
+                                System.out.println(lineajuego.toString());
+                                juego.agregarFichaLineaComodin(f, j, l1, l2);
+                            }catch (IOException ex) {
                                 ex.printStackTrace();
                             }
                         }
-                        
-                    
+                        else{
+                            //Ventana OpciónInicioFin si la linea tiene una ficha y se necesita especificar dónde poner la ficha
+                            try{
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("OpcionInicioFin.fxml"));
+                                Scene cs = new Scene(loader.load(),600,600); //1. cargar el controller en una escena
+                                Stage st = new Stage();
+                                st.setScene(cs);
+                                st.show();
+                            }catch(IOException e){
+                                
+                            }
+                        }
                     }
                     else{ //si ficha no es comodin
                         if(juego.agregarFichaLinea(f, j)){
