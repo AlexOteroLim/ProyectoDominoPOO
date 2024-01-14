@@ -47,7 +47,6 @@ public class VistaDominoController implements Initializable {
         @FXML
     private HBox hboxBot;
 
-    @FXML
     private Text lineaUsr;
     public HBox hboxJuego;
     @FXML

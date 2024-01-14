@@ -11,16 +11,11 @@
    <children>
       <VBox alignment="CENTER" layoutX="149.0" layoutY="136.0" prefHeight="73.0" prefWidth="211.0" spacing="20.0">
          <children>
-<<<<<<< HEAD
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Escoger dónde será ubicada la ficha:" wrappingWidth="217.08123779296875">
                <font>
                   <Font name="Rockwell" size="15.0" />
                </font></Text>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="100.0">
-=======
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Escoger dónde será ubicada la ficha:" />
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0">
->>>>>>> 83c5715479ee3fef4004fc810a76fa4659d0935c
                <children>
                   <Button fx:id="botonInicio" mnemonicParsing="false" onAction="#inicioPress" prefHeight="34.0" prefWidth="54.0" text="Inicio" />
                   <Button fx:id="botonFin" mnemonicParsing="false" onAction="#finPress" prefHeight="35.0" prefWidth="40.0" text="Fin" />
