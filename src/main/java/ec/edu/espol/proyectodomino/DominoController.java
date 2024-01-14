@@ -11,6 +11,7 @@ import JuegoDomino.Jugador;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -50,13 +51,16 @@ public class DominoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //variables del juego
-        juego = App.juego;
-        lineajuego = juego.getLineajuego();
-        jugador = juego.getJugadores().get(0);
-        bot = juego.getJugadores().get(1);
+        juego = new Juego();
+        juego.agregarJugador("user");
+        juego.agregarJugador("Bot");
+        //jugadores - instancias
+        Jugador jugador = juego.getJugadores().get(0);
+        Jugador bot = juego.getJugadores().get(1);
+//        lineaUsr.setText("Línea de " + PantallaInicioController.njugador); //modidica el nombre del usuario (revisar PIcontroller)
+        manoJugador =jugador.getMano();
         manoBot = bot.getMano();
-        manoJugador = jugador.getMano();
-        
+        lineajuego = juego.getLineajuego();       
         cargarFichas(bot, manoBot);
         cargarFichas(jugador, manoJugador);
         
