@@ -4,11 +4,16 @@
  */
 package JuegoDomino;
 
+import static ec.edu.espol.proyectodomino.App.loadFXML;
 import ec.edu.espol.proyectodomino.VistaDominoController;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 /**
  *
