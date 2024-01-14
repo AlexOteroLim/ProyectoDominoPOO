@@ -24,11 +24,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.scene.effect.ColorAdjust;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -94,47 +89,6 @@ public class DominoController implements Initializable {
                     //cuando pase por encima del mouse se vea puntero
                    img.setCursor(Cursor.HAND);
                 });
-                try {
-                    //Abrir selecNumController
-                    //ventanaSelecNum
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("PantallaFinal.fxml"));
-                    // Crear la nueva ventana
-                    Stage nuevaVentana = new Stage();
-                    // Configurar la escena y mostrar la nueva ventana
-                    Scene scene;
-
-                    scene = new Scene(loader.load(), 400, 400);
-                    nuevaVentana.setScene(scene);
-                    nuevaVentana.show();
-                    if(!jugador.jugabilidad(juego)||!bot.jugabilidad(juego)){
-                        if(!jugador.jugabilidad(juego) && bot.tieneComodin()){
-                            juego.maquina(bot);
-                            refreshJugador(bot);
-                            refreshLJuego();
-                        }
-                        if(!jugador.jugabilidad(juego) && !bot.tieneComodin()){
-                            //perdiste
-                            jGanador = false;
-                            nuevaVentana.show();
-                        }else if(!bot.jugabilidad(juego) && !jugador.tieneComodin()){
-                            //ganaste
-                            jGanador = true;
-                            nuevaVentana.show();
-                        }
-                    }
-                    if(manoJugador.isEmpty()){
-                        //ventana ganaste
-                        jGanador = true;
-                        nuevaVentana.show();
-                    }else if(manoBot.isEmpty()){
-                        //ventana perdiste
-                        jGanador = false;
-                        nuevaVentana.show();
-                    }}
-                catch (IOException ex) {
-                            }
-                
-                
                 img.setOnMouseClicked(event ->{
                     System.out.println(f.toString());
                     if(f instanceof FichaComodin){//dos casos, si hay elementos en lJuego o no
@@ -218,16 +172,6 @@ public class DominoController implements Initializable {
             }
         }
     }
-    public int posFicha(Ficha f){
-        if(lineajuego.isEmpty())
-            return 0;
-        if(f.getLado2() == juego.obtenerValorInicioLinea()){
-                return 0;
-            }else if(f.getLado1() == juego.ObtenerValorFinLinea()){
-                return 1;
-            }else
-                return 0;
-    }
     public void refreshJugador(Jugador j){
         if(j.getNombre().equals("bot")){
             lineaBotHbox.getChildren().clear();
@@ -260,8 +204,24 @@ public class DominoController implements Initializable {
                         lineaJuegoHBox.getChildren().add(img);                        
                     }
                 }
+            if(manoJugador.isEmpty()){
+                jGanador = true;
+                this.lanzarVtnGanador();
+            } else if(manoBot.isEmpty()){
+                jGanador = false;
+                this.lanzarVtnGanador();
+            }
+            if(!jugador.jugabilidad(juego) || !bot.jugabilidad(juego)){
+                if(!jugador.jugabilidad(juego) && !jugador.tieneComodin()){
+                    jGanador = false;
+                    this.lanzarVtnGanador().show();
+                }else if(!bot.jugabilidad(juego) && !bot.tieneComodin()){
+                    jGanador = true;
+                    this.lanzarVtnGanador().show();
+                }
+            }
+         }
         
-    }
     public ImageView imgFicha(int l1, int l2){
         ImageView imv = new ImageView("/ImagesDomino/-1--1.png");
         imv.setFitHeight(90);
@@ -273,5 +233,21 @@ public class DominoController implements Initializable {
             return imv;
         }
         return imv;
+    }
+    public Stage lanzarVtnGanador(){
+        try {
+            //ventanaSelecNum
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("PantallaFinal.fxml"));
+            // Crear la nueva ventana
+            Stage nuevaVentana = new Stage();
+            // Configurar la escena y mostrar la nueva ventana
+            Scene scene;
+            scene = new Scene(loader.load(), 600, 400);
+            nuevaVentana.setScene(scene);
+            return nuevaVentana;
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return null;
     }
 }
