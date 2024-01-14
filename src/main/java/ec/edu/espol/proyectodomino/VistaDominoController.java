@@ -23,6 +23,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -41,14 +42,16 @@ public class VistaDominoController implements Initializable {
     public static Ficha selected;
     private Jugador bot;
     private Jugador user;
-    @FXML
+
+    private ArrayList<Ficha> lineajuego;
+        @FXML
     private HBox hboxBot;
-    @FXML       
-    HBox hboxJuego;
-    @FXML
-    HBox hboxUser;
+
     @FXML
     private Text lineaUsr;
+    public HBox hboxJuego;
+    @FXML
+    public HBox hboxUser;
 
     /**
      * Initializes the controller class.
@@ -116,9 +119,28 @@ public class VistaDominoController implements Initializable {
                         this.selected = ficha;
                         imv.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent t) ->{
                             try{
-                                juego.agregarFichaLinea(ficha, user);
-                                hboxJuego.getChildren().add(imv);
-                                hboxUser.getChildren().remove(t);
+                                if(juego.agregarFichaLinea(selected, user)){
+                                    //si esta vacia
+                                    if (lineajuego.isEmpty()){
+                                        lineajuego.add(ficha);
+                                        user.removerFicha(ficha);
+                                        hboxJuego.getChildren().add(imv);
+                                    }
+                                    else{
+                                        //si hay elementos
+                                        if(selected.getLado2() == juego.obtenerValorInicioLinea()){
+                                                lineajuego.add(0, selected);
+                                                user.removerFicha(selected);
+                                                hboxJuego.getChildren().add(0,imv);
+                                            }
+                                            else if(selected.getLado1() == juego.ObtenerValorFinLinea()){
+                                                lineajuego.add(selected);
+                                                user.removerFicha(selected);
+                                                hboxJuego.getChildren().add(imv);
+                                            }
+                                        }
+                                    hboxUser.getChildren().remove(t);
+                                }
                             }catch(Exception e){
                                 
                             }
@@ -131,6 +153,14 @@ public class VistaDominoController implements Initializable {
             
         }
         
+    }
+
+    public HBox getHboxJuego() {
+        return hboxJuego;
+    }
+
+    public void setHboxJuego(HBox hboxJuego) {
+        this.hboxJuego = hboxJuego;
     }
     
 }

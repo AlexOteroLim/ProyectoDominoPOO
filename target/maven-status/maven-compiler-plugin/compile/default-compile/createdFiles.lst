@@ -9,3 +9,4 @@ ec\edu\espol\proyectodomino\SeleccionarNumController.class
 ec\edu\espol\proyectodomino\VistaDominoController.class
 module-info.class
 JuegoDomino\Jugador.class
+ec\edu\espol\proyectodomino\DominoController.class

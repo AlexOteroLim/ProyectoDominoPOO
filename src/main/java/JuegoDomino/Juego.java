@@ -4,16 +4,23 @@
  */
 package JuegoDomino;
 
+import static ec.edu.espol.proyectodomino.App.loadFXML;
+import ec.edu.espol.proyectodomino.VistaDominoController;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+import javafx.scene.Scene;
+import javafx.scene.layout.HBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 /**
  *
  * @author Javier Otero
  */
 public class Juego {
-    private ArrayList<Ficha> lineajuego;
+    public ArrayList<Ficha> lineajuego;
     private ArrayList<Jugador> jugadores;
     
     
@@ -55,7 +62,6 @@ public class Juego {
                 System.out.println(lineajuego.get(i).toString());
         }
     }
-    //devuelve bool en el caso que movimiento sea valido
     public boolean agregarFichaLinea(Ficha f, Jugador j){ //agrega ficha a linea(mesa); retorna booleano y remueve ficha de la mano
         Scanner sc = new Scanner(System.in);
         if(f instanceof FichaComodin ){
