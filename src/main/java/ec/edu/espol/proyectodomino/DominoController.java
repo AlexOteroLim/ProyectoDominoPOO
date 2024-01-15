@@ -73,13 +73,11 @@ public class DominoController implements Initializable {
         cargarFichas(bot, manoBot);
         cargarFichas(jugador, manoJugador);
         
-        System.out.println("Inicio Juego");
-        System.out.println(bot.getMano().toString());
+
         
     } 
     //carga las fichas
     public void cargarFichas(Jugador j, ArrayList<Ficha> fichas){
-        System.out.println(j.getNombre());
         if(j.getNombre().equals("bot")){
             for(Ficha f: fichas){
                 ImageView img = (ImageView)this.imgFicha(f.getLado1(), f.getLado2());
@@ -94,7 +92,6 @@ public class DominoController implements Initializable {
                    img.setCursor(Cursor.HAND);
                 });
                 img.setOnMouseClicked(event ->{
-                    System.out.println(f.toString());
                     if(f instanceof FichaComodin){//dos casos, si hay elementos en lJuego o no
                         //si no hay elementos en lineajuego
                         if(lineajuego.isEmpty()){
@@ -119,7 +116,6 @@ public class DominoController implements Initializable {
                             juego.maquina(bot);
                             refreshJugador(bot);
                             refreshLJuego();
-                            System.out.println(lineajuego.toString());
                             } catch (IOException ex) {
                             }
                         }else{
@@ -178,7 +174,6 @@ public class DominoController implements Initializable {
                                 this.lanzarVtnGanador().show();
                               }                              
                               refreshLJuego();
-                              System.out.println(lineajuego.toString());
                             } else{
                             //lanzar que ficha no es compatible
                             Alert alert = new Alert(AlertType.INFORMATION);

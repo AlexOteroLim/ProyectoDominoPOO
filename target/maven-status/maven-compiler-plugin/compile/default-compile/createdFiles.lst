@@ -3,6 +3,7 @@ ec\edu\espol\proyectodomino\PantallaFinalController.class
 ec\edu\espol\proyectodomino\App.class
 JuegoDomino\Ficha.class
 ec\edu\espol\proyectodomino\OpcionInicioFinController.class
+ec\edu\espol\proyectodomino\Principal.class
 JuegoDomino\Juego.class
 ec\edu\espol\proyectodomino\PantallaInicioController.class
 JuegoDomino\FichaComodin.class

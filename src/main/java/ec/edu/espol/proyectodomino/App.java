@@ -1,19 +1,18 @@
 package ec.edu.espol.proyectodomino;
 
 import JuegoDomino.Juego;
-import JuegoDomino.Jugador;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Random;
+import javafx.scene.image.Image;
 
 /**
  * JavaFX App
  */
+//autores Annabella Sanchez, Juan Munizaga, Alex Otero
 public class App extends Application {
     public static Juego juego;
     private static Scene scene;
@@ -21,7 +20,8 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("PantallaInicio").load(),1280,720);
-
+        stage.setTitle("Juego de Domino");
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/imagenesOtros/dominoIcon.png")));
         stage.setScene(scene);
         stage.show();
     }

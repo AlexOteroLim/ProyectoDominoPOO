@@ -12,11 +12,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 /**
@@ -51,6 +50,8 @@ public class PantallaInicioController implements Initializable {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("domino.fxml"));
                 // Crear la nueva ventana
                 Stage nuevaVentana = new Stage();
+                nuevaVentana.setTitle("Juego de Domino");
+                nuevaVentana.getIcons().add(new Image(getClass().getResourceAsStream("/imagenesOtros/dominoIcon.png")));
                 // Configurar la escena y mostrar la nueva ventana
                 Scene scene;
 
